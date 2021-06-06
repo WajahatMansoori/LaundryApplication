@@ -1,0 +1,35 @@
+﻿@model LaundryApplication.Models.PaymentMethod
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutBEnd.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PaymentMethod</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pay_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pay_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pay_Des)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pay_Des)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Pay_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

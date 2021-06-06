@@ -1,0 +1,640 @@
+
+.section-gap {
+	padding: 120px 0;
+}
+.section-title {
+	padding-bottom: 30px;
+	h2 {
+		margin-bottom: 20px;
+	}
+	p {
+		font-size: 16px;
+		margin-bottom: 0;
+		@include media-breakpoint-down (md) {
+			br {
+				display: none;
+			}
+		}
+	}
+}
+
+
+
+.genric-btn{
+	font-size:12px;
+}
+
+.p1-gradient-bg {
+  background-image: -moz-linear-gradient( 0deg, rgb(83,254,218) 0%, rgb(139,255,111) 100%);
+  background-image: -webkit-linear-gradient( 0deg, rgb(83,254,218) 0%, rgb(139,255,111) 100%);
+  background-image: -ms-linear-gradient( 0deg, rgb(83,254,218) 0%, rgb(139,255,111) 100%);
+}
+
+.p1-gradient-color {
+  background: -moz-linear-gradient( 0deg, rgb(83,254,218) 0%, rgb(139,255,111) 100%);
+  background: -webkit-linear-gradient( 0deg, rgb(83,254,218) 0%, rgb(139,255,111) 100%);
+  background: -ms-linear-gradient( 0deg, rgb(83,254,218) 0%, rgb(139,255,111) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+
+//--------- Start Banner Area -------------//
+
+.banner-area {
+	background:url(../img/header-bg.jpg) center;
+	background-size:cover;
+	.fullscreen {
+		@include media-breakpoint-down (sm) {
+			height: 700px !important;
+		}
+	}
+	.primary-btn{
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	.overlay-bg{
+		@extend .p1-gradient-bg;
+		opacity:.8;
+	}
+	.header-img{
+		position:absolute;
+		z-index:2;
+		bottom:-60px;
+		@media(max-width:1280px){
+			width:58%;
+		}
+		@media(max-width:960px){
+			display:none;
+		}
+	}
+
+}
+.banner-content {
+	text-align:left;
+	h1{
+		font-size: 75px;
+		font-weight: 700;
+		line-height: 1em;
+		margin-top:20px;
+		span{
+			font-weight:700;
+		}
+		@include media-breakpoint-down(md) {
+			font-size: 36px;
+		}
+		br {
+			@include media-breakpoint-down (md) {
+				display: none;
+			}
+		}
+
+		@include media-breakpoint-down (lg) {
+				font-size:45px;
+		}	
+
+		@media ( max-width:414px ) {
+			font-size:38px;
+		}
+	}
+	h5{
+		font-weight:400;
+		letter-spacing: 3px;
+	}
+
+	.genric-btn{
+		margin-top:40px;
+		border:1px solid $black;
+		font-size:14px;
+		color:$black;
+		background: transparent;
+		&:hover{
+			background:$black;
+			color:$white;
+		}
+	}
+
+}
+
+
+//--------- End Banner Area -------------//
+
+//--------- start quote Area -------------//
+
+	.quote-left{
+		h2{
+			font-weight:100;
+			span{
+				font-weight:600;
+			}
+			@include media-breakpoint-down (lg) {
+				font-size:28px;
+			}
+			@include media-breakpoint-down (md) {
+				padding-bottom:25px;
+				text-align:center !important;
+			}
+		}
+				@media( max-width:414px){
+			h2{
+				font-size:24px;
+				br{
+					display:none;
+				}
+			}
+		}
+	}
+
+	.quote-right{
+		p{
+			margin-bottom:0;
+		}
+		@include media-breakpoint-down (md) {
+			p{
+				text-align:center !important;
+			}
+		
+		}
+
+	}
+
+//--------- end quote Area -------------//
+
+
+//--------- Start service Area -------------//
+
+.single-service{
+	.thumb{
+		@extend .p1-gradient-bg;
+		img{
+			width:100%;
+			@include transition();
+		}
+	}
+	&:hover{
+		img{
+			opacity:.5;
+		}
+	}
+	h4{
+		padding:20px 0;
+	}
+	@media(max-width:960px){
+		margin-bottom:30px;	
+	}	
+}
+
+
+//--------- End service Area -------------//
+
+
+
+//--------- Start video Area -------------//
+
+.video-left{
+	background:url(../img/video-bg.jpg) center;
+	background-size:cover;
+	padding:300px 0px;
+	.video-content {
+		text-align: center;
+		position: relative;
+		z-index: 2;
+	}
+	.overlay-bg{
+		background-color:rgba(#000,.5);
+	}
+}
+
+.video-right{
+	margin-left:80px;
+	h1{
+		margin-bottom:20px;
+	}
+	.primary-btn{
+		@extend .p1-gradient-bg;
+	}
+	@media(max-width:960px){
+		margin-left:0px;
+		padding-top:50px;
+		padding-bottom:50px;
+	}
+}
+
+//--------- End video Area -------------//
+
+
+//--------- Start feature Area -------------//
+
+.feature-area{
+	background-color:$offwhite;
+	.header-text{
+		text-align:center;
+		h1{
+			margin-bottom:20px;
+		}	
+	}
+}
+
+
+.single-feature {
+	background-color:$offwhite;
+	padding:30px;
+	margin-bottom:30px;
+	background-color:$white;
+	@include transition();
+	&:hover{
+		box-shadow: 0px 20px 30px 0px rgba(35, 94, 231, 0.2);
+		cursor:pointer;
+		h4{
+			color:$primary-color;
+		}
+	}
+	h4{
+		@include transition();
+		margin-top:20px;
+		margin-bottom:20px;
+		.lnr{
+			margin-right:15px;
+		}
+	}
+}
+
+
+//--------- End feature Area -------------//
+
+
+//--------- Start pricing Area -------------//
+
+.single-pricing{
+	text-align:center;
+	h4{
+		padding:40px 0 20px 0;
+		color:$black;
+	}
+	img{
+		@include filter(grayscale, 100%);
+
+		@include transition();
+
+	}
+	&:hover{
+		img{	
+			@include filter(grayscale, 0%);
+		}
+	}
+	@media(max-width:960px){
+		padding-bottom:30px;
+	}
+}
+
+
+//--------- End pricing Area -------------//
+
+//--------- Start get-estimate Area -------------//
+
+.get-estimate-area{
+	background:url(../img/estimate-bg.jpg) center;
+	background-size:cover;
+	.overlay-bg{
+		background-color:rgba(#000, .75)
+	}
+	.common-input,.common-textarea{
+		border-radius:0;
+		border-color:#4e6575;
+		color:$white!important;
+		font-size:12px;
+		&:focus {
+    		background-color: transparent;
+		}
+	}
+	.common-textarea{
+		height:120px;
+	}
+	.forms{
+		z-index: 2;
+	}
+	::-webkit-input-placeholder {
+			color:    $white;
+			font-weight: 300;
+		}
+		:-moz-placeholder {
+			color:    $white;
+			opacity:  1;
+			font-weight: 300;
+		}
+		::-moz-placeholder {
+			color:    $white;
+			opacity:  1;
+			font-weight: 300;
+		}
+		:-ms-input$white { 
+			color:    #777777;
+			font-weight: 300;
+		}
+		::-ms-input-placeholder { 
+			color:    $white;
+			font-weight: 300;
+		}
+		.primary-btn{
+			float: right;
+			padding:0px 30px;
+			@extend .p1-gradient-bg;
+			color:$black;
+			text-transform:capitalize; 
+			@include transition();
+			border:1px solid transparent;
+			&:hover{
+				background-color:transparent;
+				border:1px solid $white;
+				color:$white;
+			}
+		}	
+	}
+
+//--------- End get-estimate Area -------------//
+
+//--------- start testimonial area  -------------//
+
+.home-testimonial-area{
+	.owl-controls{
+		position: absolute;
+		left: 101%;
+		top: 25%;		
+		@media(max-width: 1024px){
+			position:relative;
+			text-align: center;
+			left:0;
+			top:20px;
+			.owl-prev,.owl-next{
+				display: inline-block;
+			}
+		}
+	}
+
+
+	.lnr-arrow-up,.lnr-arrow-down{
+		background-color: rgb(255, 255, 255);
+		box-shadow: -14.142px 14.142px 20px 0px rgba(157, 157, 157, 0.2);
+		padding: 14px;
+		color: #000;
+		font-weight: 500;
+		border: 1px solid #f5f5f5;	
+		display:inline-flex;	
+	}
+
+
+
+	.single-testimonial{
+		background-color: $offwhite;
+		padding: 25px 30px 12px 30px;
+		@include transition();
+		.thumb{
+			margin-right:30px;
+		}
+		h4{
+			@include transition();
+			margin-bottom:5px;
+		}
+		&:hover{
+			h4{
+				color:$primary-color;
+				cursor:pointer;
+			}
+		}
+	}
+
+	@media(max-width:414px){
+		padding:15px;
+	}
+}
+//--------- end testimonial area  -------------//
+
+//-------- Start Contact Form ----------//
+
+.contact-area {
+	background: $white;
+	h2{
+		color:$white;
+		font-size:36px;
+		font-weight: 600px;
+		letter-spacing:4px;
+	}
+	p{
+		margin-top: 15px;
+		color:$white;
+	}
+}
+
+
+.form-area{
+	width:100%;
+	margin-left: 40px;
+	@media ( max-width:960px) {  
+		margin-left:0px;
+	}
+}
+
+
+
+.g-map{
+	width:100%;
+	height:100%;
+}
+
+
+.form-area{
+	.primary-btn{
+		@extend .p1-gradient-bg;
+		color:$white;
+		@include transition();
+		&:hover{
+			background:transparent;
+			color:$primary-color;
+			border:1px solid $primary-color;
+		}
+	}	
+}
+
+.contact-form {
+	@include media-breakpoint-down (sm) {
+		margin-top: 30px;
+	}
+	::-webkit-input-placeholder {
+		color:    #777777;
+		font-weight: 300;
+	}
+	:-moz-placeholder {
+		color:    #777777;
+		opacity:  1;
+		font-weight: 300;
+	}
+	::-moz-placeholder {
+		color:    #777777;
+		opacity:  1;
+		font-weight: 300;
+	}
+	:-ms-input-placeholder { 
+		color:    #777777;
+		font-weight: 300;
+	}
+	::-ms-input-placeholder { 
+		color:    #777777;
+		font-weight: 300;
+	}
+	padding: 40px 30px;
+}
+.common-input {
+	border: 1px solid rgba(#6f7598, .3);
+	line-height: 48px;
+	width: 100%;
+	display: block;
+	background: transparent;
+	padding: 0 25px;
+	color: $text-color;
+}
+.common-textarea {
+	border: 1px solid rgba(#6f7598, .3);
+	width: 100%;
+	display: block;
+	background: transparent;
+	padding: 15px 25px;
+	color: $text-color;
+	height: 150px;
+	resize: none;
+}
+.alert-msg {
+	color: #69d71c;
+	margin-top: 20px;
+	display: none;
+	width: 100%;
+	text-align: center;
+}
+
+
+@media (max-width: 768px) {
+	.contact-left{
+		text-align:center;
+	}
+}
+
+
+//-------- End Contact Form ----------//
+
+
+//-------- Start Footer Style ----------//
+
+.footer-area{
+	background-color:$black;
+	h4{
+		padding-bottom:30px;
+		color:$white;
+	}
+	.number{
+		@extend .p1-gradient-color;
+		font-size:24px;
+		font-weight:600;
+		line-height:30px;
+		@media(max-width:767px){
+			font-size: 22px;
+		}
+	}
+
+	.genric-btn{
+		@extend .p1-gradient-bg;
+		border: none;
+		border-radius: 57px;
+		height: 36px;
+	}
+
+	.primary-btn{
+		background-color:$primary-color;
+	}
+
+	.primary-btn:hover{
+		.lnr{
+			color:$primary-color;
+		}
+	}
+
+	.footer-bottom{
+		padding-top: 40px;
+		a{
+			color:$primary-color;
+		}
+
+		.footer-social{
+			text-align:right;
+			a{
+				background: #111111;
+				margin:2px;
+				padding: 12px 16px;
+				@include transition();
+				&:hover{
+					@extend .p1-gradient-bg;
+				}
+			}
+			i{
+				color:#cccccc;
+				@include transition();
+			}
+			@include media-breakpoint-down(md) {
+				text-align:left;
+			}
+			@media(max-width:960px){
+				margin-top:20px;
+			}
+		}
+	}
+	.single-footer-widget{
+		@media(max-width:768px){
+			.newsletter .primary-btn {
+				right: 2% !important;
+				width: auto;
+				right: 0;
+				top: 5px;
+				transform: translate(0%, 0);
+			}
+		}
+	}
+}
+
+.single-footer-widget{
+	.navbar-form{
+		width:100%;
+		.form-control{
+			border:none;
+			border-radius: 20px;
+			font-size:13px;
+			background-color:#f9f9ff;			
+		}
+		.add-on{
+			background: #f9f9ff;
+			border-radius: 20px;
+			border: 1px solid #fff;			
+		}
+		.genric-btn{
+			&:hover{
+				background-color:$primary-color;
+				.lnr{
+					color:$white;
+				}
+			}
+		}
+		.lnr{
+			font-weight:900;
+			font-size: 18px !important;
+			color:$white;
+		}
+	}
+}
+
+//-------- End Footer Style ----------//

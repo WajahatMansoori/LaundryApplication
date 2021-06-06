@@ -1,0 +1,90 @@
+﻿@model IEnumerable<LaundryApplication.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutBEnd.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    @using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+    {
+        <b>Search By:</b><text>&nbsp;&nbsp;</text> @Html.RadioButton("SearchBy", "Name")<text> Name</text><br />
+        @Html.TextBox("Search", "", new { @class = "form-control", @placeholder = "Search By Name" })<br /> <input type="submit" value="Search" class="btn btn-success btn-block" />
+    }
+    <input type="text" id="SearchName" placeholder="Search name" class="form-control"/>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cus_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="Search">
+        <td>
+            @Html.DisplayFor(modelItem => item.Cus_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Cus_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Cus_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Cus_Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#SearchName").keyup(function () {
+            var searchtext = $("#SearchName").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchtext)) {
+                    $(this).hide();
+
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>

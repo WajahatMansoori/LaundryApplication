@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LaundryApplication.Models.Customer>
+
+@{
+    ViewBag.Title = "CustomerList";
+    Layout = "~/Views/Shared/_LayoutBEnd.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p>
+    @using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+    {
+        <b>Search By:</b><text>&nbsp;&nbsp;</text> @Html.RadioButton("SearchBy", "Name")<text> Name</text><br />
+        @Html.TextBox("Search", "", new { @class = "form-control", @placeholder = "Search By Name" })<br /> <input type="submit" value="Search" class="btn btn-success btn-block" />
+    }
+
+</p>
+
+<table class="table text-center" style="font-size:14px; font-weight:bold; color:black;">
+    <tr>
+        <th class="text-center" colspan="2" style="font-size:30px; background-color:black;color:white;">
+            Customer Name
+            
+        </th>
+
+    </tr>
+   
+    @foreach (var item in Model)
+    {
+        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cus_Name)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Cus_Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Cus_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Cus_Id })
+            </td>
+        </tr>
+    }
+
+</table>

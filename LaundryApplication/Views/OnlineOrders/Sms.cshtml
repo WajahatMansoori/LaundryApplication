@@ -1,0 +1,58 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Sms";
+                Layout = "~/Views/Shared/_LayoutBEnd.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @*<p>Number</p>*@
+    @*<p>@Html.TextBox("number", null, new { @class = "form-control" })</p>*@
+    @*<div class="form-group">
+            <label class="form-label">Number</label>
+            @Html.TextBox("number", null, new { @class = "form-control" })
+
+        </div>*@
+    <br />
+    <table class="table">
+        <tr>
+            <th colspan="2" class="text-center" style="font-size:35px;background-color:black;color:white;">
+                SMS
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Number
+            </td>
+            <td>
+
+                @Html.TextBox("number", null, new { @class = "form-control", @placeholder = "923xxxxxxxxx" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Message
+            </td>
+            <td>
+                @Html.DropDownList("txt", new List<SelectListItem>
+           {
+               new SelectListItem{Text="Select Message",Value="1",Selected=true},
+               new SelectListItem{Text="Your Invoice has been Generated Successfully",Value="2"},
+               new SelectListItem{Text="Your order will soon Deliver at your door step",Value="3"}
+           }, new { @class = "form-control" })
+                @*@Html.TextBox("txt", null, new { @class = "form-control",@placeholder="Enter your Message" })*@
+            </td>
+        </tr>
+        <tr>
+
+            <td colspan="2">
+                <input type="submit" value="send" class="btn btn-dark col-md-offset-5" style="width:20%; font-weight:bold; background-color:black;color:white;" />
+            </td>
+        </tr>
+    </table>
+
+    <p class="alert-info">@ViewBag.str</p>
+}

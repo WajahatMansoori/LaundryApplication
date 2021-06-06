@@ -1,0 +1,66 @@
+﻿@model LaundryApplication.Models.Customer
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_LayoutFEnd.cshtml";
+}
+
+@Html.Raw(TempData["CusFail"])
+<section class="login-form-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center pb-20">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <br />
+                    <h1>Login/Register Forms</h1>
+                    <span class="text-uppercase">Who are in extremely love with eco friendly system.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 login-form-left offset-3">
+                <div class="card-container" style="color:blue;font-weight:bold;font-family:'Times New Roman';">
+                    <h1 class="text-center bg-danger text-white text-uppercase" style="font-size:40px; text-decoration:underline;">Registration</h1>
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Cus_Name, new { @class = "text-uppercase mt-10" })
+                            @Html.TextBoxFor(model => model.Cus_Name, new { @class = "form-control", @placeholder = "Enter your Name" })
+
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "text-uppercase mt-10" })
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Someone@gmail.com" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, new { @class = "text-uppercase mt-10" })
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Enter your Password" })
+
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, new { @class = "text-uppercase mt-10" })
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Enter your Address" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Phone, new { @class = "text-uppercase mt-10" })
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Enter your PhoneNo" })
+
+                        </div>
+                        <div class="form-group">
+
+                            <input type="submit" name="register-submit" id="register-submit" class="btn btn-outline-primary offset-3 w-50 " value="Register">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

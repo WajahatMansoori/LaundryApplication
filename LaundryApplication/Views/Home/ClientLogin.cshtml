@@ -1,0 +1,50 @@
+﻿@model LaundryApplication.Models.Customer
+@{
+    ViewBag.Title = "ClientLogin";
+    Layout = "~/Views/Shared/_LayoutFEnd.cshtml";
+}
+
+@Html.Raw(TempData["logoutCus"])
+@Html.Raw(TempData["Reg"])
+@Html.Raw(TempData["NotPosted"])
+
+<section class="login-form-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center pb-30">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <br />
+                    <h1>Login/Register Forms</h1>
+                    <span class="text-uppercase">Who are in extremely love with eco friendly system.</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 login-form-left offset-3">
+                <div class="card-container" style="color:blue;font-weight:bold;font-family:'Times New Roman';">
+                    <h4 class="text-uppercase bg-danger text-white mb-50 mt-30" style="font-size:40px; text-decoration:underline;">LogIn</h4>
+
+                    @using (Html.BeginForm())
+                    {
+                        <span id="reauth-email" class="reauth-email"></span>
+                        @Html.LabelFor(model => model.Cus_Name, new { @class = "text-uppercase" })
+                        @Html.TextBoxFor(model => model.Cus_Name, new { @class = "form-control", @placeholder = "Enter your name" })
+
+                        @Html.LabelFor(model => model.Password, new { @class = "text-uppercase" })
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Enter your Password" })
+                        <br />
+                        <input type="submit" value="Login" class="btn btn-outline-primary w-50 offset-3">
+                    }
+
+                    <a href="@Url.Action("Registration","Home")" class="mt-10 forgot-password text-primary">
+                        Not Registered Yet!!
+                    </a>
+                </div><!-- /card-container -->
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+

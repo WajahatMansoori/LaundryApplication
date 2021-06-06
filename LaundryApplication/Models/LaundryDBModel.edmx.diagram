@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="93c18bff62d04bc1aec075abde1ba9ff" Name="Diagram1">
+        <EntityTypeShape EntityType="LaundryDBModel.Admin" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaundryDBModel.Category" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaundryDBModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaundryDBModel.InvoiceGenerate" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaundryDBModel.OnlineOrder" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaundryDBModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="LaundryDBModel.FK__InvoiceGe__CatID__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="LaundryDBModel.FK__OnlineOrd__CatID__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="LaundryDBModel.FK__InvoiceGe__CusID__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="LaundryDBModel.FK__OnlineOrd__CusID__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="LaundryDBModel.FK__InvoiceGe__PayID__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="LaundryDBModel.FK__OnlineOrd__PayID__1A14E395" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

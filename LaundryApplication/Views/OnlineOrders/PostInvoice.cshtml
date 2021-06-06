@@ -1,0 +1,227 @@
+﻿@model LaundryApplication.Models.InvoiceGenerate
+
+@{
+    ViewBag.Title = "PostInvoice";
+    Layout = "~/Views/Shared/_LayoutFEnd.cshtml";
+}
+
+<h2>PostInvoice</h2>
+
+@Html.Raw(TempData["CusLogin"])
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div>
+    <div class="col-md-12 ">
+        <div style="border:4px groove blue; font-family:'Times New Roman';background-color:aliceblue;">
+            <table class="table table-striped table-hover" style="color:black; font-size:15px; font-weight:bold; ">
+                <tr>
+                    <th class="text-center" colspan="2" style="font-size:45px;text-decoration:underline; background-color:red;color:white; font-weight:bold;">
+                        @ViewBag.CusLogin Details
+                        @Html.ActionLink("Logout", "logout", "OnlineOrders", new { @class = "btn btn-outline-dark float-right" })
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Customer.Cus_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Customer.Cus_Name)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Category.Cat_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Category.Cat_Name)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.PaymentMethod.Pay_Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.PaymentMethod.Pay_Type)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Cat_Des)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Cat_Des)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Item_Quantity)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(model => model.Item_Quantity)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.DeliveryStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.DeliveryStatus)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Barcode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Barcode)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Invoice_Month)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Invoice_Month)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Invoice_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Invoice_Date)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Amount)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Pay_Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Pay_Status)
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div>
+        <h4>InvoiceGenerate</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Cat_Des)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cat_Des)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Item_Quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item_Quantity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliveryStatus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DeliveryStatus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Invoice_Month)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Invoice_Month)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Invoice_Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Invoice_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Barcode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Barcode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pay_Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pay_Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.Cat_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Cat_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.Cus_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.Cus_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PaymentMethod.Pay_Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PaymentMethod.Pay_Type)
+            </dd>
+
+        </dl>
+    </div>*@
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Inv_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

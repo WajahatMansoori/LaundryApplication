@@ -1,0 +1,83 @@
+﻿@model LaundryApplication.Models.OnlineOrder
+@{
+    ViewBag.Title = "LaundryOrder";
+    Layout = "~/Views/Shared/_LayoutFEnd.cshtml";
+}
+
+@Html.Raw(TempData["OrderError"])
+@Html.Raw(TempData["PackageError"])
+@Html.Raw(TempData["Order"])
+
+@Html.Raw(TempData["Post"])
+
+<section class="login-form-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center pb-0">
+            <div class="col-lg-8">
+                <div class="section-title text-center">
+                    <br />
+                    <h1>Customer/Order Booking</h1>
+                    <span class="text-uppercase">Who are in extremely love with eco friendly system.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 login-form-left offset-3">
+                <div class="card-container" style="color:blue;font-weight:bold;font-family:'Times New Roman';">
+                    <h1 class="text-center bg-danger text-white text-uppercase" style="font-size:40px; text-decoration:underline;">Order Booking</h1>
+                    <br />
+                    @using (Html.BeginForm())
+                    {
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.CusIDFk, "CusIDFK", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                            @Html.DropDownList("CusIDFK", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CatIDFK, "CatIDFK", htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.DropDownList("CatIDFk", null, htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PayIDFk, "PayIDFk", htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.DropDownList("PayIDFk", null, htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Cat_Des, new { @class = "text-uppercase mt-10" })
+                            @Html.DropDownListFor(model => model.Cat_Des, new SelectList(new[] { "Per Piece", "Per Kg", "Package" }), "Select Type", new { @class = "form-control" })
+
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Pay_Des, new { @class = "text-uppercase mt-10" })
+                            @Html.DropDownListFor(model => model.Pay_Des, new SelectList(new[] { "Credit Card", "Cash" }), "Select Payment Method", new { @class = "form-control" })
+
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Item_Quantity, new { @class = "text-uppercase mt-10" })
+                            @Html.TextBoxFor(model => model.Item_Quantity, new { @class = "form-control", @placeholder = "Enter your Item Quantity" })
+
+                        </div>
+                        
+
+                        <div class="form-group">
+
+                            <input type="submit" name="register-submit" id="register-submit" class="btn btn-outline-danger offset-4" value="Confirm Order">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+

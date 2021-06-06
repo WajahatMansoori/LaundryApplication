@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LaundryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Cat_Id" />
+          </Key>
+          <Property Name="Cat_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cat_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cat_Des" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cat_Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cus_Id" />
+          </Key>
+          <Property Name="Cus_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvoiceGenerate">
+          <Key>
+            <PropertyRef Name="Inv_Id" />
+          </Key>
+          <Property Name="Inv_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusIDFk" Type="int" />
+          <Property Name="CatIDFK" Type="int" />
+          <Property Name="PayIDFk" Type="int" />
+          <Property Name="Pay_Des" Type="varchar" MaxLength="50" />
+          <Property Name="Cat_Des" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Item_Quantity" Type="int" Nullable="false" />
+          <Property Name="DeliveryStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Invoice_Month" Type="varchar" MaxLength="50" />
+          <Property Name="Invoice_Date" Type="varchar" MaxLength="50" />
+          <Property Name="Barcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Pay_Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OnlineOrder">
+          <Key>
+            <PropertyRef Name="Ord_Id" />
+          </Key>
+          <Property Name="Ord_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusIDFk" Type="int" />
+          <Property Name="CatIDFK" Type="int" />
+          <Property Name="PayIDFk" Type="int" />
+          <Property Name="Cat_Des" Type="varchar" MaxLength="50" />
+          <Property Name="Pay_Des" Type="varchar" MaxLength="50" />
+          <Property Name="Item_Quantity" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Pay_Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Pay_Id" />
+          </Key>
+          <Property Name="Pay_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pay_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pay_Des" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__InvoiceGe__CatID__24927208">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="InvoiceGenerate" Type="Self.InvoiceGenerate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cat_Id" />
+            </Principal>
+            <Dependent Role="InvoiceGenerate">
+              <PropertyRef Name="CatIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoiceGe__CusID__239E4DCF">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="InvoiceGenerate" Type="Self.InvoiceGenerate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cus_Id" />
+            </Principal>
+            <Dependent Role="InvoiceGenerate">
+              <PropertyRef Name="CusIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoiceGe__PayID__25869641">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="InvoiceGenerate" Type="Self.InvoiceGenerate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Pay_Id" />
+            </Principal>
+            <Dependent Role="InvoiceGenerate">
+              <PropertyRef Name="PayIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineOrd__CatID__1920BF5C">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="OnlineOrder" Type="Self.OnlineOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cat_Id" />
+            </Principal>
+            <Dependent Role="OnlineOrder">
+              <PropertyRef Name="CatIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineOrd__CusID__182C9B23">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OnlineOrder" Type="Self.OnlineOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cus_Id" />
+            </Principal>
+            <Dependent Role="OnlineOrder">
+              <PropertyRef Name="CusIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineOrd__PayID__1A14E395">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="OnlineOrder" Type="Self.OnlineOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Pay_Id" />
+            </Principal>
+            <Dependent Role="OnlineOrder">
+              <PropertyRef Name="PayIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaundryDBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceGenerate" EntityType="Self.InvoiceGenerate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OnlineOrder" EntityType="Self.OnlineOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__InvoiceGe__CatID__24927208" Association="Self.FK__InvoiceGe__CatID__24927208">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="InvoiceGenerate" EntitySet="InvoiceGenerate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoiceGe__CusID__239E4DCF" Association="Self.FK__InvoiceGe__CusID__239E4DCF">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="InvoiceGenerate" EntitySet="InvoiceGenerate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoiceGe__PayID__25869641" Association="Self.FK__InvoiceGe__PayID__25869641">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="InvoiceGenerate" EntitySet="InvoiceGenerate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineOrd__CatID__1920BF5C" Association="Self.FK__OnlineOrd__CatID__1920BF5C">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="OnlineOrder" EntitySet="OnlineOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineOrd__CusID__182C9B23" Association="Self.FK__OnlineOrd__CusID__182C9B23">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="OnlineOrder" EntitySet="OnlineOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineOrd__PayID__1A14E395" Association="Self.FK__OnlineOrd__PayID__1A14E395">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="OnlineOrder" EntitySet="OnlineOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LaundryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Cat_Id" />
+          </Key>
+          <Property Name="Cat_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cat_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cat_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cat_Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="InvoiceGenerates" Relationship="Self.FK__InvoiceGe__CatID__1DE57479" FromRole="Category" ToRole="InvoiceGenerate" />
+          <NavigationProperty Name="OnlineOrders" Relationship="Self.FK__OnlineOrd__CatID__1920BF5C" FromRole="Category" ToRole="OnlineOrder" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Cus_Id" />
+          </Key>
+          <Property Name="Cus_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="InvoiceGenerates" Relationship="Self.FK__InvoiceGe__CusID__1CF15040" FromRole="Customer" ToRole="InvoiceGenerate" />
+          <NavigationProperty Name="OnlineOrders" Relationship="Self.FK__OnlineOrd__CusID__182C9B23" FromRole="Customer" ToRole="OnlineOrder" />
+        </EntityType>
+        <EntityType Name="InvoiceGenerate">
+          <Key>
+            <PropertyRef Name="Inv_Id" />
+          </Key>
+          <Property Name="Inv_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusIDFk" Type="Int32" />
+          <Property Name="CatIDFK" Type="Int32" />
+          <Property Name="PayIDFk" Type="Int32" />
+          <Property Name="Cat_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Item_Quantity" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Invoice_Month" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Invoice_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Pay_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__InvoiceGe__CatID__1DE57479" FromRole="InvoiceGenerate" ToRole="Category" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__InvoiceGe__CusID__1CF15040" FromRole="InvoiceGenerate" ToRole="Customer" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__InvoiceGe__PayID__1ED998B2" FromRole="InvoiceGenerate" ToRole="PaymentMethod" />
+          <Property Name="Pay_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="OnlineOrder">
+          <Key>
+            <PropertyRef Name="Ord_Id" />
+          </Key>
+          <Property Name="Ord_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusIDFk" Type="Int32" />
+          <Property Name="CatIDFK" Type="Int32" />
+          <Property Name="PayIDFk" Type="Int32" />
+          <Property Name="Cat_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pay_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Item_Quantity" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Pay_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__OnlineOrd__CatID__1920BF5C" FromRole="OnlineOrder" ToRole="Category" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__OnlineOrd__CusID__182C9B23" FromRole="OnlineOrder" ToRole="Customer" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__OnlineOrd__PayID__1A14E395" FromRole="OnlineOrder" ToRole="PaymentMethod" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Pay_Id" />
+          </Key>
+          <Property Name="Pay_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pay_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pay_Des" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="InvoiceGenerates" Relationship="Self.FK__InvoiceGe__PayID__1ED998B2" FromRole="PaymentMethod" ToRole="InvoiceGenerate" />
+          <NavigationProperty Name="OnlineOrders" Relationship="Self.FK__OnlineOrd__PayID__1A14E395" FromRole="PaymentMethod" ToRole="OnlineOrder" />
+        </EntityType>
+        <Association Name="FK__InvoiceGe__CatID__1DE57479">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="InvoiceGenerate" Type="Self.InvoiceGenerate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cat_Id" />
+            </Principal>
+            <Dependent Role="InvoiceGenerate">
+              <PropertyRef Name="CatIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineOrd__CatID__1920BF5C">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="OnlineOrder" Type="Self.OnlineOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Cat_Id" />
+            </Principal>
+            <Dependent Role="OnlineOrder">
+              <PropertyRef Name="CatIDFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoiceGe__CusID__1CF15040">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="InvoiceGenerate" Type="Self.InvoiceGenerate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cus_Id" />
+            </Principal>
+            <Dependent Role="InvoiceGenerate">
+              <PropertyRef Name="CusIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineOrd__CusID__182C9B23">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="OnlineOrder" Type="Self.OnlineOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Cus_Id" />
+            </Principal>
+            <Dependent Role="OnlineOrder">
+              <PropertyRef Name="CusIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoiceGe__PayID__1ED998B2">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="InvoiceGenerate" Type="Self.InvoiceGenerate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Pay_Id" />
+            </Principal>
+            <Dependent Role="InvoiceGenerate">
+              <PropertyRef Name="PayIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OnlineOrd__PayID__1A14E395">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="OnlineOrder" Type="Self.OnlineOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="Pay_Id" />
+            </Principal>
+            <Dependent Role="OnlineOrder">
+              <PropertyRef Name="PayIDFk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaundryDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="InvoiceGenerates" EntityType="Self.InvoiceGenerate" />
+          <EntitySet Name="OnlineOrders" EntityType="Self.OnlineOrder" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <AssociationSet Name="FK__InvoiceGe__CatID__1DE57479" Association="Self.FK__InvoiceGe__CatID__1DE57479">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="InvoiceGenerate" EntitySet="InvoiceGenerates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineOrd__CatID__1920BF5C" Association="Self.FK__OnlineOrd__CatID__1920BF5C">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="OnlineOrder" EntitySet="OnlineOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoiceGe__CusID__1CF15040" Association="Self.FK__InvoiceGe__CusID__1CF15040">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="InvoiceGenerate" EntitySet="InvoiceGenerates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineOrd__CusID__182C9B23" Association="Self.FK__OnlineOrd__CusID__182C9B23">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="OnlineOrder" EntitySet="OnlineOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoiceGe__PayID__1ED998B2" Association="Self.FK__InvoiceGe__PayID__1ED998B2">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="InvoiceGenerate" EntitySet="InvoiceGenerates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OnlineOrd__PayID__1A14E395" Association="Self.FK__OnlineOrd__PayID__1A14E395">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="OnlineOrder" EntitySet="OnlineOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LaundryDBModelStoreContainer" CdmEntityContainer="LaundryDBEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="LaundryDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="LaundryDBModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Cat_Id" ColumnName="Cat_Id" />
+                <ScalarProperty Name="Cat_Name" ColumnName="Cat_Name" />
+                <ScalarProperty Name="Cat_Des" ColumnName="Cat_Des" />
+                <ScalarProperty Name="Cat_Price" ColumnName="Cat_Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="LaundryDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Cus_Id" ColumnName="Cus_Id" />
+                <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceGenerates">
+            <EntityTypeMapping TypeName="LaundryDBModel.InvoiceGenerate">
+              <MappingFragment StoreEntitySet="InvoiceGenerate">
+                <ScalarProperty Name="Pay_Des" ColumnName="Pay_Des" />
+                <ScalarProperty Name="Inv_Id" ColumnName="Inv_Id" />
+                <ScalarProperty Name="CusIDFk" ColumnName="CusIDFk" />
+                <ScalarProperty Name="CatIDFK" ColumnName="CatIDFK" />
+                <ScalarProperty Name="PayIDFk" ColumnName="PayIDFk" />
+                <ScalarProperty Name="Cat_Des" ColumnName="Cat_Des" />
+                <ScalarProperty Name="Item_Quantity" ColumnName="Item_Quantity" />
+                <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+                <ScalarProperty Name="Invoice_Month" ColumnName="Invoice_Month" />
+                <ScalarProperty Name="Invoice_Date" ColumnName="Invoice_Date" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Pay_Status" ColumnName="Pay_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnlineOrders">
+            <EntityTypeMapping TypeName="LaundryDBModel.OnlineOrder">
+              <MappingFragment StoreEntitySet="OnlineOrder">
+                <ScalarProperty Name="Ord_Id" ColumnName="Ord_Id" />
+                <ScalarProperty Name="CusIDFk" ColumnName="CusIDFk" />
+                <ScalarProperty Name="CatIDFK" ColumnName="CatIDFK" />
+                <ScalarProperty Name="PayIDFk" ColumnName="PayIDFk" />
+                <ScalarProperty Name="Cat_Des" ColumnName="Cat_Des" />
+                <ScalarProperty Name="Pay_Des" ColumnName="Pay_Des" />
+                <ScalarProperty Name="Item_Quantity" ColumnName="Item_Quantity" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Pay_Status" ColumnName="Pay_Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="LaundryDBModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="Pay_Id" ColumnName="Pay_Id" />
+                <ScalarProperty Name="Pay_Type" ColumnName="Pay_Type" />
+                <ScalarProperty Name="Pay_Des" ColumnName="Pay_Des" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
